@@ -1,12 +1,6 @@
-import { useContext } from 'react';
-
-import { CounterContext } from './CounterContext';
-
 import ButtonItem from './ButtonItem';
 
-function ButtonGroup() {
-	const { onDecrement, onReset, onIncrement } = useContext(CounterContext);
-
+function ButtonGroup({ onDecrement, onReset, onIncrement }) {
 	return (
 		<div>
 			<ButtonItem onAction={onDecrement}>-</ButtonItem>

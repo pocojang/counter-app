@@ -1,10 +1,4 @@
-import { useContext } from 'react';
-
-import { CounterContext } from './CounterContext';
-
-function InputRange() {
-	const { handleDiff, diff } = useContext(CounterContext);
-
+function InputRange({ handleDiff, diff }) {
 	return <input type="range" max={10} onChange={handleDiff} value={diff} />;
 }
 

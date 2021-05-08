@@ -1,9 +1,4 @@
-import { useContext } from 'react';
-import { CounterContext } from './CounterContext';
-
-function ShowCount() {
-	const { count, diff } = useContext(CounterContext);
-
+function ShowCount({ count, diff }) {
 	return (
 		<h1>
 			{count} {'&'} {diff}
