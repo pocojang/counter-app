@@ -1,4 +1,5 @@
 import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { increment, decrement, setDiff, reset } from './actions';
 
@@ -6,14 +7,15 @@ import ButtonGroup from './ButtonGroup';
 import ShowCount from './ShowCount';
 import InputRange from './InputRange';
 
-function App({ store }) {
-	const { count, diff } = store.getState();
+function App() {
+	const { count, diff } = useSelector((state) => state);
+	const dispatch = useDispatch();
 
-	const onIncrement = () => store.dispatch(increment());
-	const onDecrement = () => store.dispatch(decrement());
-	const onReset = () => store.dispatch(reset());
+	const onIncrement = () => dispatch(increment());
+	const onDecrement = () => dispatch(decrement());
+	const onReset = () => dispatch(reset());
 
-	const handleDiff = ({ target }) => store.dispatch(setDiff(target.valueAsNumber));
+	const handleDiff = ({ target }) => dispatch(setDiff(target.valueAsNumber));
 
 	return (
 		<div className="App">
