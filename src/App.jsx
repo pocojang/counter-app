@@ -1,19 +1,19 @@
 import './App.css';
-import { useState } from 'react';
+
+import { increment, decrement, setDiff, reset } from './actions';
 
 import ButtonGroup from './ButtonGroup';
 import ShowCount from './ShowCount';
 import InputRange from './InputRange';
 
-function App() {
-	const [count, setCount] = useState(0);
-	const [diff, setDiff] = useState(0);
+function App({ store }) {
+	const { count, diff } = store.getState();
 
-	const onIncrement = () => setCount((prevCount) => prevCount + (diff || 1));
-	const onDecrement = () => setCount((prevCount) => prevCount - (diff || 1));
-	const onReset = () => setCount(0);
+	const onIncrement = () => store.dispatch(increment());
+	const onDecrement = () => store.dispatch(decrement());
+	const onReset = () => store.dispatch(reset());
 
-	const handleDiff = ({ target }) => setDiff(target.valueAsNumber);
+	const handleDiff = ({ target }) => store.dispatch(setDiff(target.valueAsNumber));
 
 	return (
 		<div className="App">
