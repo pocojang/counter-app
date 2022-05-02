@@ -1,14 +1,17 @@
-import { useContext } from 'react';
+import React from 'react';
 import { CounterContext } from './CounterContext';
 
-function ShowCount() {
-	const { count, diff } = useContext(CounterContext);
-
-	return (
-		<h1>
-			{count} {'&'} {diff}
-		</h1>
-	);
+class ShowCount extends React.Component {
+	render() {
+		return (
+			<CounterContext.Consumer>
+				{(props) => (
+					<h1>
+						{props.count} {'&'} {props.diff}
+					</h1>
+				)}
+			</CounterContext.Consumer>
+		);
+	}
 }
-
 export default ShowCount;

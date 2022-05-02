@@ -1,19 +1,23 @@
-import { useContext } from 'react';
+import React from 'react';
 
 import { CounterContext } from './CounterContext';
 
 import ButtonItem from './ButtonItem';
 
-function ButtonGroup() {
-	const { onDecrement, onReset, onIncrement } = useContext(CounterContext);
-
-	return (
-		<div>
-			<ButtonItem onAction={onDecrement}>-</ButtonItem>
-			<ButtonItem onAction={onReset}>Reset</ButtonItem>
-			<ButtonItem onAction={onIncrement}>+</ButtonItem>
-		</div>
-	);
+class ButtonGroup extends React.Component {
+	render() {
+		return (
+			<CounterContext.Consumer>
+				{(props) => (
+					<div>
+						<ButtonItem onAction={props.onDecrement}>-</ButtonItem>
+						<ButtonItem onAction={props.onReset}>Reset</ButtonItem>
+						<ButtonItem onAction={props.onIncrement}>+</ButtonItem>
+					</div>
+				)}
+			</CounterContext.Consumer>
+		);
+	}
 }
 
 export default ButtonGroup;
